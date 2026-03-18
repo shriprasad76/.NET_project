@@ -1,0 +1,62 @@
+@page
+@model Dotnet_project.Pages.customers.CreateModel
+@{
+    ViewData["Title"] = "create";
+}
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="alert alert-danger" role="alert">
+        @Model.ErrorMessage
+    </div>
+}
+@if(TempData["SuccessMessage"] != null)
+{
+<div class="alert alert-success" role="alert">
+@TempData["SuccessMessage"]
+</div>
+}
+
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="row">
+<h2>New Customer</h2>
+<form method="post">
+@* <div class="row mb-3">
+<label class ="col-sm-4 col-form-label">Id</label>
+<div class="col-sm-8">
+<input class="form-control" asp-for="Create.id" />
+<span asp-validation-for="Create.id" class="text-danger"></span>
+</div> *@
+<div class="row mb-3">
+<label class ="col-sm-4 col-form-label">Name*</label>
+<div class="col-sm-8">
+    <input class="form-control" asp-for="Name" />
+    <span asp-validation-for="Name" class="text-danger"></span>
+</div>
+</div>
+<div class="row mb-3">
+<label class ="col-sm-4 col-form-label">Email*</label>
+<div class="col-sm-8">
+    <input class="form-control" asp-for="Email" />
+    <span asp-validation-for="Email" class="text-danger"></span>
+</div>
+</div>
+<div class="row mb-3">
+<label class ="col-sm-4 col-form-label">Phone*</label>
+<div class="col-sm-8">
+    <input class="form-control" asp-for="Phone" />
+    <span asp-validation-for="Phone" class="text-danger"></span>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-4 offset-sm-4 d-grid">
+<button type="submit" class="btn btn-primary">Submit</button>
+</div>
+<div class="col-sm-4 d-grid">
+<a asp-page="/Customers/Index" class="btn btn-secondary">Cancel</a>
+</div>
+ </div>
+</form>
+
+ </div>

@@ -1,0 +1,47 @@
+@page
+@model Dotnet_project.Pages.customers.IndexModel
+@{
+    ViewData["Title"] = "Customers";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if(TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<p>
+    <a asp-page="/Customers/Create" class="btn btn-primary">New Customer</a>
+</p>
+
+<div>
+<table class="table">
+<thead>
+<tr>
+<th>Id</th>
+<th>Name</th>
+<th>Email</th>
+<th>Phone</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+@foreach (var customer in Model.listCustomers)
+{
+<tr>
+<td>@customer.Id</td>
+<td>@customer.Name</td>
+<td>@customer.Email</td>
+<td>@customer.Phone</td>
+<td>
+    <a href="/Customers/Edit?id=@customer.Id" class="btn btn-sm btn-primary">Edit</a>
+    <a href="/Customers/Delete?id=@customer.Id" class="btn btn-sm btn-danger ms-1">Delete</a>
+</td>
+</tr>
+}
+</tbody>
+</table>
+</div>
